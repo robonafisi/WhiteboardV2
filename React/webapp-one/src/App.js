@@ -3,7 +3,7 @@ import './App.css';
 
 function NameList(){
   const[list, setList] = useState(["Jack", "Jill", "John"]);
-  const [name, setName] = useState("Bob"); 
+  const [name, setName] = useState(""); 
 
    function nameChange(){
      setList([...list, name]);
