@@ -1,6 +1,36 @@
 import { useState } from 'react';
 import './App.css';
 
+function NameList(){
+  const[list, setList] = useState(["Jack", "Jill", "John"]);
+  const [name, setName] = useState(""); 
+
+   function nameChange(){
+     setList([...list, name]);
+     setName('');
+     console.log(list,name);
+   };
+
+  return(
+    <div>
+      <ul>
+        {list.map((name)=>(
+          <li key={name}>{name}</li>
+        ))}
+      </ul>
+      <input
+      type="text"
+      value={name}
+      onChange={(e) => setName(e.target.value)}
+      />
+      <button
+      onClick={nameChange}>
+        Add Name
+      </button> 
+    </div>
+  )
+}
+
 function Counter() {
   const[count, setCount] = useState(10);
 
@@ -13,8 +43,8 @@ function Counter() {
   }
 
   return (
-    <div className="App">
-      <header className="App-header">
+    <div>
+      <header>
         <button
         onClick={addOne}>
           Add
@@ -35,9 +65,7 @@ function App() {
   return(
     <div>
       <Counter />
-      <Counter />
-      <Counter />
-      <Counter />
+      <NameList />
     </div>
   );
 }
