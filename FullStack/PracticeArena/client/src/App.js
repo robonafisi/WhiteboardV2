@@ -1,25 +1,26 @@
-import './App.css';
-import axios from 'axios';
-import React, { Component } from 'react'
+import axios from "axios";
+import React,{useState,useEffect} from "react";
 
-const api = axios.create({
-  baseURL: `https://opentdb.com/api.php?amount=10`
-})
+const baseURL = "https://opentdb.com/api.php?amount=10";
 
-export default class App extends Component {
+export default function App() {
+  const [post, setPost] = useState("");
 
-  constructor(){
-    super();
-    api.get('/').then(res => {
-      console.log(res.data)
-    })
-  }
+  useEffect(() => {
+    axios.get(baseURL).then((response) => {
+      setPost(response.data.results[0].question);
+      console.log("This is post:",post);
+      console.log(response.data.results[0].question);
+      //console.log(typeof(response.data.results[0].category));
+    });
+  }, []);
 
-  render() {
-    return (
-      <div>
-        
-      </div>
-    )
-  }
+  if (!post) return null;
+
+  return (
+    <div>
+      <h1>Hello</h1>
+      <h1>{post}</h1>
+    </div>
+  );
 }
