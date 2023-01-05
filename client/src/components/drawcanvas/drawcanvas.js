@@ -1,4 +1,4 @@
-import './drawingcanstyle.css';
+import './drawcanstyle.css';
 import {useEffect, useRef, useState} from 'react';
 
 const DrawingCanvas = () => {

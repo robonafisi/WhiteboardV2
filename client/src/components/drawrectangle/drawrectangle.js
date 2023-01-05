@@ -2,8 +2,6 @@ import './drawrecstyle.css';
 import {useEffect, useRef, useState} from 'react';
 
 const DrawRectangle = () => {
-    const [recstartx, setRecstartx] = useState("Null");
-    const [recstarty, setRecstarty] = useState("Null");
 
 
     const canvasRef = useRef(null);
@@ -37,9 +35,7 @@ const DrawRectangle = () => {
         nativeEvent.stopPropagation();
 
         startX.current = nativeEvent.clientX - canvasOffSetX.current;
-        setRecstartx(startX);
         startY.current = nativeEvent.clientY - canvasOffSetY.current;
-        setRecstarty(startY);
 
 
         setIsDrawing(true);
